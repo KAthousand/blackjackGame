@@ -2,7 +2,7 @@
 // https://deckofcardsapi.com/
 // Shuffled Deck of cards api
 // `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`
-//  Draw a card from deck using deck id
+//  Draw a card from deck using deck idl
 // `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`
 
 
@@ -37,44 +37,59 @@ async function main() {
 
   player = 0 // start round at users turn
   const hitBtn = document.querySelector('#hit') // add listener to hit me button with function
-  hitBtn.addEventListener('click', (async () => {
+  hitBtn.addEventListener('click', (async function () {
     userHand.push(await drawCard(deckId, player, userTotal))
-    userTotal += await checkTotal(userHand, player)
+    userTotal = await checkTotal(userHand, player)
+    return userHand, userTotal
   }))
 
-  console.log(`This is the dealer total: ${dealerTotal}`)
+  // console.log(`This is the user total: ${userTotal}`)
+  // console.log(`This is the dealer total: ${dealerTotal}`)
+
+  // console.log(`This is the dealer total: ${dealerTotal}`)
   const stayBtn = document.querySelector('#stay')
   stayBtn.addEventListener('click', async function () {
+    // console.log(`dealerTotal inside stay function ${dealerTotal}`)
     await stay(deckId, player, dealerTotal, dealerHand, userTotal)
+    console.log(`dealerTotal inside stay function ${dealerTotal}`)
     await compare(dealerTotal, userTotal)
+    return dealerHand, dealerTotal
   })
 
   let resetBtn = document.querySelector('#reset-btn')
   resetBtn.addEventListener('click', async function () {
-    reset(player, userTotal, userHand, dealerTotal, dealerHand, deckId)
+    await reset(player, userTotal, userHand, dealerTotal, dealerHand, deckId)
+    // userTotal = 0
+    // userHand = []
+    // dealerTotal = 0
+    // dealerHand = []
+    return userHand, userTotal, dealerHand, dealerTotal
   })
   // reset(player, userTotal, userHand, dealerTotal, dealerHand, deckId)
 
   async function stay(deckId, player, dealerTotal, dealerHand, userTotal) {
     player++
-    console.log(`This is the dealer total again ${dealerTotal}`)
-    while (dealerTotal <= 17 && userTotal < 21) {
-      console.log(`less than 17`)
+    // console.log(`This is the user total: ${userTotal}`)
+    // console.log(`This is the dealer total: ${dealerTotal}`)
+    while (dealerTotal <= 17 && userTotal <= 21) {
+      // console.log(`less than 17`)
       dealerHand.push(await drawCard(deckId, player, dealerTotal))
       dealerTotal += await checkTotal(dealerHand, player)
     }
+    return dealerHand, dealerTotal
   }
 
   async function compare(dealerTotal, userTotal) {
     let endBox = document.querySelector('#end-container')
-
-    if (dealerTotal === 21 && userTotal === 21) {
+    console.log(`User Total inside Compare Func: ${userTotal}`)
+    console.log(`Dealer Total inside Compare Func: ${dealerTotal}`)
+    if (dealerTotal === userTotal && dealerTotal <= 21) {
       endBox.innerHTML = `<h1>Tie goes to the House!</h1>`
-    } else if (dealerTotal < 21 && dealerTotal > userTotal) {
+    } else if (dealerTotal <= 21 && dealerTotal > userTotal) {
       endBox.innerHTML = `<h1>House Wins!</h1>`
-    } else if (dealerTotal > 21) {
-      endBox.innerHTML = `<h1>House Bust!</h1>`
-    } else if (userTotal < 21 && userTotal > dealerTotal) {
+    } else if (dealerTotal > 21 && userTotal < 21) {
+      endBox.innerHTML = `<h1>House Bust! You Win!</h1>`
+    } else if (userTotal <= 21 && userTotal > dealerTotal) {
       endBox.innerHTML = `<h1>You Win!</h1>`
     } else if (userTotal > 21) {
       endBox.innerHTML = `<h1>House Wins!</h1>`
@@ -82,39 +97,46 @@ async function main() {
   }
 
   async function reset(player, userTotal, userHand, dealerTotal, dealerHand, deckId) {
+    console.log(`----------------------------------`)
     userCardImg = document.querySelector('#user-card-container')
     dealerCardImg = document.querySelector('#dealer-card-container')
     userTotalContainer = document.querySelector('#user-total-container')
     dealerTotalContainer = document.querySelector('#dealer-total-container')
     reactBox = document.querySelector('#reaction-container')
+    endBox = document.querySelector('#end-container')
 
     userCardImg.innerHTML = ``
     dealerCardImg.innerHTML = ``
     userTotalContainer.innerHTML = ``
     dealerTotalContainer.innerHTML = ``
-    console.log(reactBox.children)
     if (reactBox.innerHTML != '') {
       reactBox.innerHTML = ''
     }
     reactBox.innerHTML = ``
+    if (endBox.innerHTML != '') {
+      endBox.innerHTML = ''
+    }
 
-    player = 0 // set player to 0 indicating it is users turn
-    userTotal = 0 // set total user score to 0
-    userHand = [ // create the usersHand as 2 cards
-      await drawCard(deckId, player, userTotal),
-      await drawCard(deckId, player, userTotal)
-    ]
-    userTotal += await checkTotal(userHand, player)
+    // player = 0 // set player to 0 indicating it is users turn
+    // userTotal = 0 // set total user score to 0
+    // userHand = []
+    // userHand = [ // create the usersHand as 2 cards
+    //   await drawCard(deckId, player, userTotal),
+    //   await drawCard(deckId, player, userTotal)
+    // ]
+    // userTotal += await checkTotal(userHand, player)
 
-    player = 1 // set the player to 1 indicating it is the dealers turn
-    dealerTotal = 0 // set the dealer score to 0
-    dealerHand = [ // create the dealerHand as two cards
-      await drawCard(deckId, player, dealerTotal),
-      await drawCard(deckId, player, dealerTotal)
-    ]
-    dealerTotal += await checkTotal(dealerHand, player)
-
-    // await main()
+    // player = 1 // set the player to 1 indicating it is the dealers turn
+    // dealerTotal = 0 // set the dealer score to 0
+    // dealerHand = []
+    // dealerHand = [ // create the dealerHand as two cards
+    //   await drawCard(deckId, player, dealerTotal),
+    //   await drawCard(deckId, player, dealerTotal)
+    // ]
+    // dealerTotal += await checkTotal(dealerHand, player)
+    // console.log(`userHand: ${userHand}, userTotal: ${userTotal},dealerHand: ${userHand}, dealerTotal: ${userTotal} `)
+    // return userHand, userTotal, dealerHand, dealerTotal
+    await main()
   }
 
 }
@@ -138,9 +160,9 @@ async function getId() {
 }
 
 // Write a function that deals the cards
-async function dealCards(deckId, player, total) {
-  return await drawCard(deckId, player, total), await drawCard(deckId, player, total)
-}
+// async function dealCards(deckId, player, total) {
+//   return await drawCard(deckId, player, total), await drawCard(deckId, player, total)
+// }
 
 // Write a function to draw 1 card, capturing and appending the img, resetting and returning the value.
 async function drawCard(deckId, player, total) {
@@ -192,7 +214,12 @@ async function checkTotal(playerHand, playerNum) {
   let userTotalContainer = document.querySelector('#user-total-container')
   let dealerTotalContainer = document.querySelector('#dealer-total-container')
 
-  console.log(`Player Hand: ${playerHand}`)
+  if (playerNum === 0) {
+    console.log(`User Hand: ${playerHand}`)
+  } else {
+    console.log(`Dealer Hand: ${playerHand}`)
+  }
+  // console.log(`Player Hand: ${playerHand}`)
   let nums = playerHand.map(Number)
   let total = 0
   nums.forEach((num) => {
@@ -208,8 +235,10 @@ async function checkTotal(playerHand, playerNum) {
 
   if (playerNum === 0) {
     userTotalContainer.innerHTML = `<p>User Total: ${total}</p>`
+    console.log(`User total: ${total}`)
   } else {
     dealerTotalContainer.innerHTML = `<p>Dealer Total: ${total}</p>`
+    console.log(`Dealer total: ${total}`)
   }
   if (total === 21 && playerHand.length < 3) {
     reactBox.innerHTML = `<h1>Natural</h1>`
