@@ -92,7 +92,11 @@ async function main() {
     dealerCardImg.innerHTML = ``
     userTotalContainer.innerHTML = ``
     dealerTotalContainer.innerHTML = ``
-    reactBox.parentNode.removeChild(reactBox.parentNode.lastChild)
+    console.log(reactBox.children)
+    if (reactBox.innerHTML != '') {
+      reactBox.innerHTML = ''
+    }
+    reactBox.innerHTML = ``
 
     player = 0 // set player to 0 indicating it is users turn
     userTotal = 0 // set total user score to 0
