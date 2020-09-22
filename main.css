@@ -12,3 +12,6 @@ orange : #ca863b */
   box-sizing: border-box;
 }
 
+.hide{
+  display: none;
+}
