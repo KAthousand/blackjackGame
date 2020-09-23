@@ -42,12 +42,13 @@ async function main() {
   const hitBtn = document.querySelector('#hit')
   hitBtn.addEventListener('click', async function () {
     await hitMe(user)
+    if (user.total >= 21) {
+      await compare(dealer, user)
+    }
     return user
   })
   // BELOW DOESNT WORK
-  if (user.total > 21) {
-    await compare(dealer, user)
-  }
+
   //------------------------------
   const stayBtn = document.querySelector('#stay')
   stayBtn.addEventListener('click', async function () {
@@ -173,7 +174,7 @@ async function stay(player, otherplayer) {
   if (player.total < otherplayer.total && otherplayer.total <= 21) {
     while (player.total < 17 || player.total < otherplayer.total) {
       await hitMe(player) ///////////////////**** */
-      player.total = checkTotal(player)
+      player.total = await checkTotal(player)
     }
   }
   await compare(player, otherplayer)
