@@ -15,3 +15,113 @@ orange : #ca863b */
 .hide{
   display: none;
 }
+/* element styles ---------------------------------- */
+/* body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+button{
+  box-shadow: none;
+  border: none;
+}
+p,h1{
+  margin: 0;
+} */
+
+/* class styles ---------------------------------- */
+/* .content-wrapper{
+  background: #cbd29e;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 20px solid #f1e7cb
+} */
+
+/* .cards{
+  display: flex;
+  justify-content: center;
+} */
+/* 
+#user-card-container{ */
+  /* border: 2px solid green; */
+  /* display: flex;
+  height: 50vh;
+  justify-content: center;
+  align-items: flex-end;
+  order: 1
+
+} */
+
+/* #user-card-container img{
+  margin-right: -150px;
+}
+
+#dealer-card-container{ */
+  /* border: 2px solid blue; */
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 50vh;
+  padding: auto;
+} */
+/* 
+#dealer-card-container img{
+  margin-left: -140px;
+  transform: rotate(180deg);
+} */
+/* 
+#btn-container{ */
+  /* border: 2px solid purple; */
+  /* display: flex;
+  justify-content: center;
+  order: 3;
+  padding: 10px;
+} */
+
+/* .btn{
+  margin-left: 20px;
+  color: #ca863b ;
+  background:  #f1e7cb;
+  padding: 15px 20px;
+  border-radius: 5px;
+} */
+
+/* .total{
+  position: absolute;
+  background-color: #ca863b;
+  color: #f1e7cb;
+  padding: 20px;
+  border-radius: 100%;
+  opacity: 85%;
+} */
+/* 
+#user-total-container{
+  bottom: 35%;
+  left: 48%;
+}
+#dealer-total-container{
+  top: 36%;
+  left: 48%;
+}
+
+#reaction-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 45%;
+} */
+
+/* #end-container{ */
+  /* border: 2px solid red; */
+  /* background-color: #ca863b;
+  color: #f1e7cb;
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  left: 42%;
+
+} */

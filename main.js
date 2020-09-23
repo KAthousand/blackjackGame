@@ -14,7 +14,7 @@ startBtn.addEventListener('click', main)
 async function main() {
 
   const deckId = await getId() // capture deck id
-  console.log(deckId)
+
   const user = { // define user object
     player: 0,
     total: 0,
@@ -42,14 +42,20 @@ async function main() {
   const hitBtn = document.querySelector('#hit')
   hitBtn.addEventListener('click', async function () {
     await hitMe(user)
+    return user
   })
-
+  // BELOW DOESNT WORK
+  if (user.total > 21) {
+    await compare(dealer, user)
+  }
+  //------------------------------
   const stayBtn = document.querySelector('#stay')
   stayBtn.addEventListener('click', async function () {
     await stay(dealer, user)
-    // compare each players total values
-    await compare(dealer, user)
   })
+
+  // compare each players total values
+  // await compare(dealer, user)
 
   // use reset button to clear and reset
   const resetBtn = document.querySelector('#reset-btn')
@@ -129,7 +135,7 @@ async function checkTotal(player) {
   } else {
     console.log(`Dealer Hand: ${player.hand}`)
   }
-  console.log(player.hand)
+  // console.log(player.hand)
   let total = 0
   player.hand.forEach((num) => {
     total += num
@@ -139,10 +145,10 @@ async function checkTotal(player) {
   }
 
   if (player.player === 0) {
-    userTotalContainer.innerHTML = `<p>User Total: ${total}</p>`
+    userTotalContainer.innerHTML = `<p>User total: ${total}</p>`
     console.log(`User total: ${total}`)
   } else {
-    dealerTotalContainer.innerHTML = `<p>Dealer Total: ${total}</p>`
+    dealerTotalContainer.innerHTML = `<p>Dealer total: ${total}</p>`
     console.log(`Dealer total: ${total}`)
   }
   if (total === 21 && player.hand.length < 3) {
@@ -159,7 +165,6 @@ async function checkTotal(player) {
 async function hitMe(player) {
   player.hand.push(await drawCard(player))
   player.total = await checkTotal(player)
-  console.log(player)
   return player
 }
 
@@ -167,16 +172,18 @@ async function hitMe(player) {
 async function stay(player, otherplayer) {
   if (player.total < otherplayer.total && otherplayer.total <= 21) {
     while (player.total < 17 || player.total < otherplayer.total) {
-      await hitMe(player)
+      await hitMe(player) ///////////////////**** */
       player.total = checkTotal(player)
     }
   }
+  await compare(player, otherplayer)
   return player
 }
 
 
 // Write a function to compare totals!
 async function compare(dealer, user) {
+  console.log(`dealer.total = ${dealer.total}, user.total = ${user.total}`)
   let endBox = document.querySelector('#end-container')
   // console.log(`User Total inside Compare Func: ${user.Total}`)
   // console.log(`Dealer Total inside Compare Func: ${dealer.Total}`)
@@ -213,7 +220,7 @@ async function reset(players) {
   if (endBox.innerHTML != '') {
     endBox.innerHTML = ''
   }
-
+  console.log(`------------------------`)
   players.user.total = 0
   players.user.hand = []
   players.dealer.total = 0
