@@ -23,6 +23,7 @@ button{
 }
 p,h1{
   margin: 0;
+  font-family: 'Alfa Slab One', cursive;
 }
 
 /* Title Card---------------------------------- */
@@ -34,6 +35,7 @@ p,h1{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   border: 20px solid #f1e7cb
 }
 
@@ -60,20 +62,18 @@ p,h1{
   align-items: flex-end;
   order: 3;
   margin: 0 auto;
-  height: 50vh
-
+  height: 50vh;
 }
 
-#user-card-container img{
-  /* margin-right: -100px; */
+.special-margin{
+  margin-left: -120px;
 }
-
 /* Dealer Card Container---------------------------------- */
 #dealer-card-container{
   border: 2px solid white;
   width: 50%;
   display: flex;
-  position: relative;
+  /* position: relative; */
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
@@ -84,9 +84,9 @@ p,h1{
 
 #dealer-card-container img{
   /* margin-left: -140px; */
-  position: absolute;
+  /* position: absolute;
   left: 35%;
-  top: 4%;
+  top: 4%; */
 }
 
 .dealer{
@@ -105,7 +105,7 @@ p,h1{
   width: 200px;
   margin: 0 auto;
   text-align: center;
-  order: 4
+  position: absolute;
 }
 /* .cards{
   display: flex;
@@ -116,17 +116,17 @@ p,h1{
   width: 226px;
   height: 314px;
   position: absolute;
-  left: 35%;
-  top: 4%;
+  left: 42%;
+  top: 2%;
   border: .5px solid black;
   border-radius: 15px;
   margin-left: -100px;
   z-index: 1000;
 }
 
-.dealer{
+/* .dealer{
   margin-left: -50px;
-}
+} */
 
 #user-card-back{
   width: 226px;
@@ -145,36 +145,33 @@ p,h1{
   justify-content: center;
   align-items: center;
   order: 5;
-  height: 10vh
+  height: 5vh
   /* padding: 10px; */
-}
-
-.btn{
-
 }
 
 .total{
   position: absolute;
-  background-color: #ca863b;
+  /* background-color: #ca863b; */
   color: #f1e7cb;
   padding: 20px;
   border-radius: 100%;
-  opacity: 85%;
+  font-size: 2em;
+  letter-spacing: 5px;
 }
 
 #user-total-container{
   bottom: 35%;
-  left: 48%;
+  left: 34%;
 }
 #dealer-total-container{
-  top: 36%;
-  left: 48%;
+  top: 30%;
+  left: 30%;
 }
 
 #reaction-container h1{
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
   top: 45%;
 }
 
@@ -222,17 +219,17 @@ p,h1{
 
 .dealer-slide{
   animation: dealer-slide;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 @keyframes dealer-slide{
   from{top: -200px}
-  to{top: 4%}
+  to{top: 2%}
 }
 
 .user-slide{
   animation: user-slide;
-  animation-duration: 3s;
+  animation-duration: 2.75s;
 }
 
 @keyframes user-slide{

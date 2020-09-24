@@ -120,20 +120,25 @@ async function drawCard(player) {
     // cardImg.classList.add('fade-in')
     // append to container depending on which player is playing
     if (player.player === 0) {
-      userContainer.append(userCardBack)
-      userCardBack.classList.add('user-slide')
-      userCardBack.classList.remove('hide')
+      if (player.hand.length < 1) {
+        userContainer.append(userCardBack)
+        userCardBack.classList.add('user-slide')
+        userCardBack.classList.remove('hide')
+      }
+      if (player.hand.length >= 1) {
+        cardImg.classList.add('special-margin')
+      }
       setTimeout(addHide, 1000, userCardBack)
       setTimeout(appendSlow, 1000, userContainer, cardImg)
       // userContainer.append(cardImg)
       // setTimeout(appendSlow, 2000, userContainer, cardImg)
-    } else if (player.player == 1) {
-      dealerContainer.append(cardImg)
-      cardImg.classList.add('dealer-slide')
-      cardImg.classList.add('dealer')
+    } else if (player.player == 1 && player.hand.length < 1) {
+      setTimeout(appendSlow, 1000, dealerContainer, cardImg)
+
+      // cardImg.classList.add('dealer-slide')
+      // cardImg.classList.add('dealer')
+
       // setTimeout(appendSlow, 1000, dealerContainer, cardImg)
-
-
       // } else if (player.player === 0 && player.hand.length >= 2) {
       //   cardImg.classList.remove('fade-in')
       //   cardImg.classList.add('fade-in')
@@ -142,6 +147,9 @@ async function drawCard(player) {
       //   cardImg.classList.remove('fade-in')
       //   cardImg.classList.add('fade-in')
       //   dealerContainer.append(cardImg)
+    } else if (player.player == 1 && player.hand.length >= 1) {
+      cardImg.classList.add('special-margin')
+      dealerContainer.append(cardImg)
     }
     // get the value of the card
     let value = card[0].value
@@ -187,7 +195,7 @@ async function checkTotal(player) {
   if (player.player === 0) {
     userTotalContainer.classList.remove('hide')
     userTotalContainer.classList.add('long-fade-in')
-    userTotalContainer.innerHTML = `<p>${total}</p>`
+    userTotalContainer.innerHTML = `<p>YOUR TOTAL: ${total}</p>`
     // setTimeout(removeHide, 2000, userTotalContainer)
     // setTimeout(addFade, 2000, userTotalContainer)
     // setTimeout(innerHtmlSlow, 2000, `<p>${total}</p>`)
@@ -199,7 +207,7 @@ async function checkTotal(player) {
     // setInterval(addHide, 1900, cardBack)
     dealerTotalContainer.classList.remove('hide')
     dealerTotalContainer.classList.add('long-fade-in')
-    dealerTotalContainer.innerHTML = `<p>${total}</p>`
+    dealerTotalContainer.innerHTML = `<p>DEALER TOTAL: ${total}</p>`
     console.log(`Dealer total: ${total}`)
   }
   if (total === 21 && player.hand.length < 3) {
@@ -221,7 +229,7 @@ async function hitMe(player) {
 
 // Write a function for stay!
 async function stay(player, otherplayer) {
-  if (player.total < otherplayer.total && otherplayer.total <= 21) {
+  if (player.total < otherplayer.total && otherplayer.total < 22) {
     while (player.total < 17 || player.total < otherplayer.total) {
       await hitMe(player) ///////////////////**** */
       player.total = await checkTotal(player)
@@ -268,6 +276,8 @@ async function reset(players) {
   userTotalContainer.classList.toggle('hide')
   dealerTotalContainer.innerHTML = ``
   dealerTotalContainer.classList.toggle('hide')
+  resetBtn.classList.toggle('hide')
+
   if (reactBox.innerHTML != '') {
     reactBox.innerHTML = ''
   }
@@ -288,7 +298,7 @@ async function reset(players) {
   players.dealer.hand = [await drawCard(players.dealer)]
   // players.dealer.hand.push(await drawCard(players.dealer))
   players.dealer.total = await checkTotal(players.dealer)
-  cardBack.className = 'fade-in'
+  dealerCardBack.className = 'fade-in'
   return players
 }
 
