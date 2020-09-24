@@ -23,8 +23,8 @@ button{
 }
 p,h1{
   margin: 0;
-  font-family: 'Alfa Slab One', cursive;
-  letter-spacing: 5px;
+  font-family: 'Patua One', cursive;
+  letter-spacing: 4px;
 }
 
 /* Background ---------------------------------- */
@@ -77,6 +77,7 @@ p,h1{
   border: .5px solid black;
   border-radius: 15px;
   z-index: 2;
+  /* box-shadow: 10px 10px 16px -1px rgba(0,0,0,0.5); */
 }
 
 /* Dealer Card Container---------------------------------- */
@@ -120,20 +121,22 @@ p,h1{
 /* Total Containers ------------------------------------ */
 
 .total{
-  /* position: absolute; */
-  /* background-color: #ca863b; */
   color: #f1e7cb;
-  font-size: 2em;
+  font-size: 1.5em;
   letter-spacing: 5px;
 }
 
 #user-total-container{
-  /* bottom: 35%;
-  left: 34%; */
-  /* border: 2px solid red; */
+  border: 1px #f1e7cb solid;
   order: 6;
+  margin-top: 10px;
+  padding: 5px;
 }
 
+#dealer-total-container{
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
 /* End Result Container---------------------------------- */
 
 .end-content-wrapper{
@@ -153,45 +156,73 @@ p,h1{
 
 #end-container h1{
   /* border: 2px solid red; */
-
   background-color: #ca863b;
   color: #f1e7cb;
-  /* position: absolute; */
+  font-size: 3em;
   padding: 10px;
   border-radius: 5px;
-  /* left: 42%; */
+  line-height: 20px;
+  margin-bottom: 15px;
 }
 
-#resetBtn{
-
+#reset-btn{
+  margin-bottom: 10px;
+  background-color: #ca863b;
+  font-family: 'Patua One', cursive;
+  color: #f1e7cb;
+  font-size: 1.5em;
+  transition: .25s;
+  border-radius: 5px;
+  padding: 0 5px;
 }
+
+#reset-btn:hover{
+  margin-bottom: 10px;
+  background-color:  #e0be77;
+  color: #ca863b;
+}
+
 
 /* Hit Me & Stay Button Container---------------------------------- */
 
 #btn-container{
   /* border: 2px solid purple; */
+  background-color: #f1e7cb;
   display: flex;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
   order: 7;
-  height: 5vh
+  height: 10vh
   /* padding: 10px; */
 }
 
+.btn{
+  background-color: #f1e7cb;
+  color: #ca863b;
+  transition: .25s;
+  font-family: 'Patua One', cursive;
+  font-size: 1em;
+  margin-top: 10px;
+  padding: 15px;
+}
+.btn:hover{
+  color: #f1e7cb;
+  background-color: #ca863b;
+  box-shadow:inset 0px 0px 0px 2px #f1e7cb;
+  border: 2px solid #ca863b;
+}
 
-/* #reaction-container h1{
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 45%;
-} */
+#hit{
+  margin-right: 25px
+}
 
+#stay{
+  margin-left: 25px;
+}
 
-
-
-/* animation classes--------------------------- */
+/* animation classes---------------------------------------------- */
 .fade-in{
   animation: fade-in;
   animation-duration: 1s;
@@ -240,7 +271,36 @@ p,h1{
   from{top: -200px}
   to{top: 2000px}
 }
+
 /* hide display--------------------------- */
+
 .hide{
   display: none;
+}
+
+/* Media Queries ------------------------------------ */
+
+/* @media only screen and (max-width: 1030px){
+  #end-container h1{
+    font-size: 2em;
+  }
+} */
+
+@media only screen and (max-width: 769px){
+  #end-container h1{
+    font-size: 1.5em;
+    line-height: 25px;
+  }
+  .end-content-wrapper{
+    width: 75%;
+  }
+
+  .cardimg{
+    width: 106px;
+    height: 164px;
+  }
+  #dealer-card-back{
+    left: 55%;
+    top: 3%;
+  }
 }
