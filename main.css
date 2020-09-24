@@ -24,9 +24,11 @@ button{
 p,h1{
   margin: 0;
   font-family: 'Alfa Slab One', cursive;
+  letter-spacing: 5px;
 }
 
-/* Title Card---------------------------------- */
+/* Background ---------------------------------- */
+
 .content-wrapper{
   background: #cbd29e;
   background-size: cover;
@@ -38,6 +40,7 @@ p,h1{
   align-items: center;
   border: 20px solid #f1e7cb
 }
+/* Title Card---------------------------------- */
 
 #title-card{
   /* border: 2px solid red; */
@@ -49,11 +52,9 @@ p,h1{
   width: 50%;
   order: 3;
 }
-#title-card h1{
-  /* border: 2px solid orange; */
-}
 
-/* User Card Container---------------------------------- */
+/* User Cards ---------------------------------- */
+
 #user-card-container{ 
   /* border: 2px solid green; */
   display: flex;
@@ -68,7 +69,18 @@ p,h1{
 .special-margin{
   margin-left: -120px;
 }
+
+#user-card-back{
+  /* width: 226px;
+  height: 314px; */
+  position: absolute;
+  border: .5px solid black;
+  border-radius: 15px;
+  z-index: 2;
+}
+
 /* Dealer Card Container---------------------------------- */
+
 #dealer-card-container{
   /* border: 2px solid white; */
   width: 50%;
@@ -82,72 +94,30 @@ p,h1{
   /* padding: auto; */
 }
 
-#dealer-card-container img{
-  /* margin-left: -140px; */
-  /* position: absolute;
-  left: 35%;
-  top: 4%; */
-}
-
 .dealer{
   margin-left: -100px;
 }
 
-
-/* End Result Container---------------------------------- */
-
-.end-content-wrapper{
-  /* border: 2px solid blue; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  position: absolute;
-}
-/* .cards{
-  display: flex;
-  justify-content: center;
-} */
-
 #dealer-card-back{
-  width: 226px;
-  height: 314px;
+  /* width: 226px;
+  height: 314px; */
   position: absolute;
   left: 42%;
   top: 2%;
   border: .5px solid black;
   border-radius: 15px;
   margin-left: -100px;
-  z-index: 1000;
+  z-index: 1;
 }
 
-/* .dealer{
-  margin-left: -50px;
-} */
+/* Card Images ------------------------------------ */
 
-#user-card-back{
-  width: 226px;
-  height: 314px;
-  position: absolute;
-  border: .5px solid black;
-  border-radius: 15px;
-  z-index: 1000;
+.cardimg{
+  width: 206px;
+  height: 294px;
 }
 
-#btn-container{
-  /* border: 2px solid purple; */
-  display: flex;
-  width: 50%;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  order: 7;
-  height: 5vh
-  /* padding: 10px; */
-}
+/* Total Containers ------------------------------------ */
 
 .total{
   /* position: absolute; */
@@ -163,17 +133,22 @@ p,h1{
   /* border: 2px solid red; */
   order: 6;
 }
-#dealer-total-container{
-  /* top: 30%;
-  left: 30%; */
-  /* border: 2px solid red; */
-}
 
-#reaction-container h1{
+/* End Result Container---------------------------------- */
+
+.end-content-wrapper{
+  /* border: 2px solid blue; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
   position: absolute;
-  top: 45%;
+  background-color: #ca863b;
+  color: #f1e7cb;
+  border-radius: 10px;
 }
 
 #end-container h1{
@@ -185,8 +160,35 @@ p,h1{
   padding: 10px;
   border-radius: 5px;
   /* left: 42%; */
+}
+
+#resetBtn{
 
 }
+
+/* Hit Me & Stay Button Container---------------------------------- */
+
+#btn-container{
+  /* border: 2px solid purple; */
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  order: 7;
+  height: 5vh
+  /* padding: 10px; */
+}
+
+
+/* #reaction-container h1{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 45%;
+} */
+
+
 
 
 /* animation classes--------------------------- */

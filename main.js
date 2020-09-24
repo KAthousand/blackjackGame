@@ -14,6 +14,7 @@ const stayBtn = document.querySelector('#stay')
 const resetBtn = document.querySelector('#reset-btn')
 let endBox = document.querySelector('#end-container')
 const content = document.querySelector('.content-wrapper')
+const endWrapper = document.querySelector('.end-content-wrapper')
 //Begin Game Functionality!---------------------------------------------------------------
 // Capture the start button.
 const startBtn = document.querySelector('#start-btn')
@@ -82,8 +83,8 @@ async function main() {
   // setTimeout(spaceEven, 500, content)
   startBtn.className = 'fade-out'
   title.className = 'fade-out'
-  setTimeout(addHide, 500, startBtn)
-  setTimeout(addHide, 500, title)
+  setTimeout(addHide, 750, startBtn)
+  setTimeout(addHide, 750, title)
 } // End of main function!------------------------------------------------------------
 
 // Write a function to capture the ID of a shuffled deck,
@@ -164,7 +165,7 @@ async function checkTotal(player) {
 
   let reactBox = document.querySelector('#reaction-container')
   let userTotalContainer = document.querySelector('#user-total-container')
-  let dealerTotalContainer = document.querySelector('#dealer-total-container')
+  // let dealerTotalContainer = document.querySelector('#dealer-total-container')
 
   if (player.player === 0) {
     console.log(`User Hand: ${player.hand}`)
@@ -194,17 +195,24 @@ async function checkTotal(player) {
     dealerCardBack.className = 'fade-out'
     dealerCardBack.classList.add('hide')
     // setInterval(addHide, 1900, cardBack)
-    dealerTotalContainer.classList.remove('hide')
-    dealerTotalContainer.classList.add('long-fade-in')
-    dealerTotalContainer.innerHTML = `<p>DEALER TOTAL: ${total}</p>`
+    // dealerTotalContainer.classList.remove('hide')
+
+    //here-------------------------------------------------------------
+    //   dealerTotalContainer.classList.add('fade-in')
+    //   setTimeout(() => {
+    //     dealerTotalContainer.classList.remove('hide')
+    //   }, 1000)
+    //   dealerTotalContainer.innerHTML = `<p>DEALER TOTAL: ${total}</p>`
     console.log(`Dealer total: ${total}`)
-  }
-  if (total === 21 && player.hand.length < 3) {
-    reactBox.innerHTML = `<h1>Natural</h1>`
-  } else if (total === 21) {
-    reactBox.innerHTML = `<h1>21</h1>`
-  } else if (total > 21) {
-    reactBox.innerHTML = `<h1>Bust</h1>`
+    // }
+
+
+    // if (total === 21 && player.hand.length < 3) {
+    //   reactBox.innerHTML = `<h1>Natural</h1>`
+    // } else if (total === 21) {
+    //   reactBox.innerHTML = `<h1>21</h1>`
+    // } else if (total > 21) {
+    //   reactBox.innerHTML = `<h1>Bust</h1>`
   }
   return total
 }
@@ -231,23 +239,49 @@ async function stay(player, otherplayer) {
 
 // Write a function to compare totals!
 async function compare(dealer, user) {
-  resetBtn.classList.remove('hide')
+  setTimeout(() => {
+    resetBtn.classList.remove('hide')
+  }, 1000)
+
+  let dealerTotalContainer = document.querySelector('#dealer-total-container')
+
   console.log(`dealer.total = ${dealer.total}, user.total = ${user.total}`)
   // let endBox = document.querySelector('#end-container')
   // endBox.classList.toggle('hide')
   // console.log(`User Total inside Compare Func: ${user.Total}`)
   // console.log(`Dealer Total inside Compare Func: ${dealer.Total}`)
   if (dealer.total === user.total && dealer.total <= 21) {
-    endBox.innerHTML = `<h1>Tie goes to the House!</h1>`
+    setTimeout(() => {
+      endBox.innerHTML = `<h1>Tie goes to the House!</h1>`
+    }, 1000)
+    // endBox.innerHTML = `<h1>Tie goes to the House!</h1>`
   } else if (dealer.total <= 21 && dealer.total > user.total) {
-    endBox.innerHTML = `<h1>House Wins!</h1>`
+    setTimeout(() => {
+      endBox.innerHTML = `<h1>House Wins!</h1>`
+    }, 1000)
+
+    // endBox.innerHTML = `<h1>House Wins!</h1>`
   } else if (dealer.total > 21 && user.total < 21) {
-    endBox.innerHTML = `<h1>House Bust! You Win!</h1>`
-  } else if (user.total <= 21 && user.total > dealer.total) {
-    endBox.innerHTML = `<h1>You Win!</h1>`
+    setTimeout(() => {
+      endBox.innerHTML = `<h1>House Bust! You Win!</h1>`
+    }, 1000)
+    // endBox.innerHTML = `<h1>House Bust! You Win!</h1>`
+  } else if (user.total <= 21 && dealer.total > 21) {
+    setTimeout(() => {
+      endBox.innerHTML = `<h1>You Win!</h1>`
+    }, 1000)
+    // endBox.innerHTML = `<h1>You Win!</h1>`
   } else if (user.total > 21) {
-    endBox.innerHTML = `<h1>House Wins!</h1>`
+    setTimeout(() => {
+      endBox.innerHTML = `<h1>House Wins!</h1>`
+    }, 1000)
+    // endBox.innerHTML = `<h1>House Wins!</h1>`
   }
+  endWrapper.classList.add('fade-in')
+  setTimeout(() => {
+    dealerTotalContainer.classList.remove('hide')
+  }, 1000)
+  dealerTotalContainer.innerHTML = `<p>DEALER TOTAL: ${dealer.total}</p>`
 }
 
 // Write a function to reset the board and players
@@ -266,6 +300,7 @@ async function reset(players) {
   dealerTotalContainer.innerHTML = ``
   dealerTotalContainer.classList.toggle('hide')
   resetBtn.classList.toggle('hide')
+  endWrapper.classList.remove('fade-in')
 
   if (reactBox.innerHTML != '') {
     reactBox.innerHTML = ''
@@ -288,8 +323,8 @@ async function reset(players) {
   setTimeout(removeHide, 1000, dealerCardBack)
   // players.dealer.hand.push(await drawCard(players.dealer))
   players.dealer.total = await checkTotal(players.dealer)
-  dealerCardBack.class
   dealerCardBack.className = 'dealer-slide'
+  dealerCardBack.classList.add('cardimg')
   return players
 }
 
