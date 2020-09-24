@@ -96,7 +96,7 @@ async function main() {
     }
   }
 
-  async function reset(player, userTotal, userHand, dealerTotal, dealerHand, deckId) {
+  async function reset() {
     console.log(`----------------------------------`)
     userCardImg = document.querySelector('#user-card-container')
     dealerCardImg = document.querySelector('#dealer-card-container')

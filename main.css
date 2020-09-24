@@ -32,7 +32,9 @@ p,h1{
 /* Background ---------------------------------- */
 
 .content-wrapper{
-  background: #cbd29e;
+  background: url(../blackjackGame/img/background\ copy.jpg) no-repeat, fixed, center;
+  /* background: #cbd29e; */
+  background-position: center center;
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -40,7 +42,7 @@ p,h1{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 20px solid #f1e7cb
+  /* border: 20px solid #f1e7cb */
 }
 /* Title Card---------------------------------- */
 
@@ -61,6 +63,7 @@ p,h1{
 #title{
     /* border: 2px solid blue; */
     background: url(../blackjackGame/img/blackjack.png) no-repeat, center;
+    background-position: center center;
     width:100%;
     height: 20vh;
     background-size: contain;
@@ -73,6 +76,7 @@ p,h1{
   color: #f1e7cb;
   letter-spacing: 2px;
   padding: 10px 20px;
+  margin-top: 15px;
   border: 3px solid #e09922;
   border-radius: 5px;
   transition: .5s;
@@ -115,6 +119,7 @@ p,h1{
   /* border: 2px solid white; */
   width: 50%;
   display: flex;
+  padding-top: 15px;
   /* position: relative; */
   justify-content: center;
   align-items: flex-start;
@@ -156,10 +161,10 @@ p,h1{
 }
 
 #user-total-container{
-  border: 1px #f1e7cb solid;
+  border: 2px #f1e7cb solid;
   order: 6;
   margin-top: 10px;
-  padding: 5px;
+  padding: 10px 5px;
 }
 
 #dealer-total-container{
@@ -309,11 +314,10 @@ p,h1{
 
 /* Media Queries ------------------------------------ */
 
-/* @media only screen and (max-width: 1030px){
-  #end-container h1{
-    font-size: 2em;
+@media only screen and (min-width: 1030px){
+  .end-content-wrapper{
+    width: 35%;
   }
-} */
 
 @media only screen and (max-width: 769px){
   #end-container h1{
