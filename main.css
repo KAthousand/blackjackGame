@@ -72,6 +72,8 @@ p,h1{
 #start-btn{
   font-family: 'Patua One', cursive;
   background-color:  #e09922;
+  box-shadow:inset 0px 0px 0px 1px #e0be77;
+  border: 2px solid  #e09922;
   font-size: 2em;
   color: #f1e7cb;
   letter-spacing: 2px;
@@ -80,10 +82,13 @@ p,h1{
   border: 3px solid #e09922;
   border-radius: 5px;
   transition: .5s;
+  opacity: 70%;
 }
 
 #start-btn:hover{
   background-color: #e0be77;
+  box-shadow:inset 0px 0px 0px 1px #e09922;;
+  border: 2px solid  #e0be77;
   color: #e09922
 }
 /* User Cards ---------------------------------- */
@@ -221,31 +226,34 @@ p,h1{
 
 #btn-container{
   /* border: 2px solid purple; */
-  background-color: #f1e7cb;
+  /* background-color: #f1e7cb; */
   display: flex;
   width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
   order: 7;
-  height: 10vh
+  height: 8vh;
+  /* opacity: 50%; */
   /* padding: 10px; */
 }
 
 .btn{
-  background-color: #f1e7cb;
-  color: #e09922;
+  background-color: #e09922;
+  box-shadow:inset 0px 0px 0px 1px #f1e7cb;
+  border: 2px solid #e09922;
+  color: #f1e7cb;
   transition: .25s;
   font-family: 'Patua One', cursive;
   font-size: 1em;
-  margin-top: 10px;
+  margin: 10px 0;
   padding: 15px;
 }
 .btn:hover{
-  color: #f1e7cb;
-  background-color:#e09922;
-  box-shadow:inset 0px 0px 0px 2px #f1e7cb;
-  border: 2px solid #e09922;
+  color: #e09922;
+  background-color:#f1e7cb;
+  box-shadow:inset 0px 0px 0px 1px #e09922;
+  border: 2px solid #f1e7cb;
 }
 
 #hit{
