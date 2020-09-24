@@ -3,9 +3,8 @@
 white : #f1e7cb
 dark : #372924
 green : #cbd29e
-orange again: #e09922
+orange: #e09922
 light orange : #e0be77
-orange : #ca863b */
 
 
 /* ---------------------------------------------------- */
@@ -17,7 +16,6 @@ orange : #ca863b */
 body{
   margin: 0;
   padding: 0;
-  /* display: flex; */
 }
 button{
   box-shadow: none;
@@ -33,7 +31,6 @@ p,h1{
 
 .content-wrapper{
   background: url(../blackjackGame/img/background\ copy.jpg) no-repeat, fixed, center;
-  /* background: #cbd29e; */
   background-position: center center;
   background-size: cover;
   width: 100%;
@@ -42,14 +39,10 @@ p,h1{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 20px solid #f1e7cb */
 }
 /* Title Card---------------------------------- */
 
 #title-card{
-  /* border: 2px solid red; */
-  /* background: url(../blackjackGame/img/blackjack.png) no-repeat, center; */
-  /* height: 20vh; */
   background-size: contain;
   display: flex;
   flex-direction: column;
@@ -61,7 +54,6 @@ p,h1{
 }
 
 #title{
-    /* border: 2px solid blue; */
     background: url(../blackjackGame/img/blackjack.png) no-repeat, center;
     background-position: center center;
     width:100%;
@@ -94,7 +86,6 @@ p,h1{
 /* User Cards ---------------------------------- */
 
 #user-card-container{ 
-  /* border: 2px solid green; */
   display: flex;
   width: 50%;
   justify-content: center;
@@ -109,29 +100,23 @@ p,h1{
 }
 
 #user-card-back{
-  /* width: 226px;
-  height: 314px; */
   position: absolute;
   border: .5px solid black;
   border-radius: 15px;
   z-index: 2;
-  /* box-shadow: 10px 10px 16px -1px rgba(0,0,0,0.5); */
 }
 
 /* Dealer Card Container---------------------------------- */
 
 #dealer-card-container{
-  /* border: 2px solid white; */
   width: 50%;
   display: flex;
   padding-top: 15px;
-  /* position: relative; */
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
   order: 1;
   height: 50vh
-  /* padding: auto; */
 }
 
 .dealer{
@@ -139,8 +124,6 @@ p,h1{
 }
 
 #dealer-card-back{
-  /* width: 226px;
-  height: 314px; */
   position: absolute;
   left: 45%;
   top: 2%;
@@ -179,7 +162,6 @@ p,h1{
 /* End Result Container---------------------------------- */
 
 .end-content-wrapper{
-  /* border: 2px solid blue; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -191,10 +173,10 @@ p,h1{
   background-color: #e09922;
   color: #f1e7cb;
   border-radius: 10px;
+  opacity: 90%;
 }
 
 #end-container h1{
-  /* border: 2px solid red; */
   background-color: #e09922;
   color: #f1e7cb;
   font-size: 2em;
@@ -225,8 +207,6 @@ p,h1{
 /* Hit Me & Stay Button Container---------------------------------- */
 
 #btn-container{
-  /* border: 2px solid purple; */
-  /* background-color: #f1e7cb; */
   display: flex;
   width: 100%;
   margin: 0 auto;
@@ -234,8 +214,6 @@ p,h1{
   align-items: center;
   order: 7;
   height: 8vh;
-  /* opacity: 50%; */
-  /* padding: 10px; */
 }
 
 .btn{
