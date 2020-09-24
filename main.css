@@ -197,7 +197,7 @@ p,h1{
   /* border: 2px solid red; */
   background-color: #e09922;
   color: #f1e7cb;
-  font-size: 3em;
+  font-size: 2em;
   padding: 10px;
   border-radius: 5px;
   line-height: 20px;
@@ -324,9 +324,12 @@ p,h1{
 
 @media only screen and (min-width: 1030px){
   .end-content-wrapper{
-    width: 35%;
+    width: 50%;
   }
-
+  #end-container h1{
+    font-size: 3em;
+  }
+}
 @media only screen and (max-width: 769px){
   #end-container h1{
     font-size: 1.5em;
