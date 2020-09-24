@@ -73,6 +73,7 @@ p,h1{
   border: 2px solid white;
   width: 50%;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
@@ -83,7 +84,13 @@ p,h1{
 
 #dealer-card-container img{
   /* margin-left: -140px; */
-  /* transform: rotate(180deg); */
+  position: absolute;
+  left: 35%;
+  top: 4%;
+}
+
+.dealer{
+  margin-left: -100px;
 }
 
 
@@ -105,7 +112,7 @@ p,h1{
   justify-content: center;
 } */
 
-#card-back{
+#dealer-card-back{
   width: 226px;
   height: 314px;
   position: absolute;
@@ -113,6 +120,21 @@ p,h1{
   top: 4%;
   border: .5px solid black;
   border-radius: 15px;
+  margin-left: -100px;
+  z-index: 1000;
+}
+
+.dealer{
+  margin-left: -50px;
+}
+
+#user-card-back{
+  width: 226px;
+  height: 314px;
+  position: absolute;
+  border: .5px solid black;
+  border-radius: 15px;
+  z-index: 1000;
 }
 
 #btn-container{
@@ -198,14 +220,24 @@ p,h1{
   to {opacity: 100;}
 }
 
-.slideIn{
-  animation: slide-in;
+.dealer-slide{
+  animation: dealer-slide;
   animation-duration: 2s;
 }
 
-@keyframes slide-in{
+@keyframes dealer-slide{
   from{top: -200px}
   to{top: 4%}
+}
+
+.user-slide{
+  animation: user-slide;
+  animation-duration: 3s;
+}
+
+@keyframes user-slide{
+  from{top: -200px}
+  to{top: 2000px}
 }
 /* hide display--------------------------- */
 .hide{

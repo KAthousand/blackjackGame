@@ -7,7 +7,8 @@
 
 //Capture from html.
 const title = document.querySelector('#title')
-const cardBack = document.querySelector('#card-back')
+const dealerCardBack = document.querySelector('#dealer-card-back')
+const userCardBack = document.querySelector('#user-card-back')
 const hitBtn = document.querySelector('#hit')
 const stayBtn = document.querySelector('#stay')
 const resetBtn = document.querySelector('#reset-btn')
@@ -43,8 +44,8 @@ async function main() {
   user.total = await checkTotal(user)
 
   // deal two cards to dealer and show total value
-  setTimeout(removeHide, 1500, cardBack)
-  cardBack.classList.add('slideIn')
+  setTimeout(removeHide, 1000, dealerCardBack)
+  dealerCardBack.classList.add('dealer-slide')
   dealer.hand = [await drawCard(dealer)]
   // dealer.hand.push(await drawCard(dealer))
   dealer.total = await checkTotal(dealer)
@@ -114,15 +115,22 @@ async function drawCard(player) {
     // create img element to put the card img in
     const cardImg = document.createElement('img')
     cardImg.className = 'cardimg'
-    cardImg.src = `${card[0].image}`
     cardImg.classList.add('fade-in')
-
+    cardImg.src = `${card[0].image}`
+    // cardImg.classList.add('fade-in')
     // append to container depending on which player is playing
     if (player.player === 0) {
-      userContainer.append(cardImg)
+      userContainer.append(userCardBack)
+      userCardBack.classList.add('user-slide')
+      userCardBack.classList.remove('hide')
+      setTimeout(addHide, 1000, userCardBack)
+      setTimeout(appendSlow, 1000, userContainer, cardImg)
+      // userContainer.append(cardImg)
       // setTimeout(appendSlow, 2000, userContainer, cardImg)
     } else if (player.player == 1) {
       dealerContainer.append(cardImg)
+      cardImg.classList.add('dealer-slide')
+      cardImg.classList.add('dealer')
       // setTimeout(appendSlow, 1000, dealerContainer, cardImg)
 
 
@@ -186,8 +194,8 @@ async function checkTotal(player) {
     // console.log(`User total: ${total}`)
 
   } else if (player.player === 1 && player.hand.length >= 2) {
-    cardBack.className = 'fade-out'
-    cardBack.classList.add('hide')
+    dealerCardBack.className = 'fade-out'
+    dealerCardBack.classList.add('hide')
     // setInterval(addHide, 1900, cardBack)
     dealerTotalContainer.classList.remove('hide')
     dealerTotalContainer.classList.add('long-fade-in')
