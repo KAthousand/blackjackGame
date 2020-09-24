@@ -5,6 +5,15 @@
 //  Draw a card from deck using deck idl
 // `https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`
 
+//Capture from html.
+const title = document.querySelector('#title')
+const cardBack = document.querySelector('#card-back')
+const hitBtn = document.querySelector('#hit')
+const stayBtn = document.querySelector('#stay')
+const resetBtn = document.querySelector('#reset-btn')
+let endBox = document.querySelector('#end-container')
+const content = document.querySelector('.content-wrapper')
+//Begin Game Functionality!---------------------------------------------------------------
 // Capture the start button.
 const startBtn = document.querySelector('#start-btn')
 // Add event listener to button to start running the program
@@ -34,12 +43,17 @@ async function main() {
   user.total = await checkTotal(user)
 
   // deal two cards to dealer and show total value
+  setTimeout(removeHide, 1500, cardBack)
+  cardBack.classList.add('slideIn')
   dealer.hand = [await drawCard(dealer)]
-  dealer.hand.push(await drawCard(dealer))
+  // dealer.hand.push(await drawCard(dealer))
   dealer.total = await checkTotal(dealer)
 
+  //reveal hit and stay btns
+  setTimeout(toggleHide, 0, hitBtn)
+  setTimeout(toggleHide, 0, stayBtn)
   // offer option to hit or stay
-  const hitBtn = document.querySelector('#hit')
+  // const hitBtn = document.querySelector('#hit')
   hitBtn.addEventListener('click', async function () {
     await hitMe(user)
     if (user.total >= 21) {
@@ -47,10 +61,8 @@ async function main() {
     }
     return user
   })
-  // BELOW DOESNT WORK
 
-  //------------------------------
-  const stayBtn = document.querySelector('#stay')
+  // const stayBtn = document.querySelector('#stay')
   stayBtn.addEventListener('click', async function () {
     await stay(dealer, user)
   })
@@ -59,12 +71,18 @@ async function main() {
   // await compare(dealer, user)
 
   // use reset button to clear and reset
-  const resetBtn = document.querySelector('#reset-btn')
+  // const resetBtn = document.querySelector('#reset-btn')
   const players = { user, dealer }
   resetBtn.addEventListener('click', async function () {
     await reset(players)
   })
-
+  // STYLE FUNCTIONALITY--------------------------------------------------------------
+  // content.style.justifyContent = 'space-evenly'
+  // setTimeout(spaceEven, 500, content)
+  startBtn.className = 'fade-out'
+  title.className = 'fade-out'
+  setTimeout(addHide, 500, startBtn)
+  setTimeout(addHide, 500, title)
 } // End of main function!------------------------------------------------------------
 
 // Write a function to capture the ID of a shuffled deck,
@@ -97,12 +115,25 @@ async function drawCard(player) {
     const cardImg = document.createElement('img')
     cardImg.className = 'cardimg'
     cardImg.src = `${card[0].image}`
+    cardImg.classList.add('fade-in')
 
     // append to container depending on which player is playing
     if (player.player === 0) {
       userContainer.append(cardImg)
-    } else {
+      // setTimeout(appendSlow, 2000, userContainer, cardImg)
+    } else if (player.player == 1) {
       dealerContainer.append(cardImg)
+      // setTimeout(appendSlow, 1000, dealerContainer, cardImg)
+
+
+      // } else if (player.player === 0 && player.hand.length >= 2) {
+      //   cardImg.classList.remove('fade-in')
+      //   cardImg.classList.add('fade-in')
+      //   userContainer.append(cardImg)
+      // } else if (player.player === 1 && player.hand.length >= 1) {
+      //   cardImg.classList.remove('fade-in')
+      //   cardImg.classList.add('fade-in')
+      //   dealerContainer.append(cardImg)
     }
     // get the value of the card
     let value = card[0].value
@@ -146,10 +177,21 @@ async function checkTotal(player) {
   }
 
   if (player.player === 0) {
-    userTotalContainer.innerHTML = `<p>User total: ${total}</p>`
-    console.log(`User total: ${total}`)
-  } else {
-    dealerTotalContainer.innerHTML = `<p>Dealer total: ${total}</p>`
+    userTotalContainer.classList.remove('hide')
+    userTotalContainer.classList.add('long-fade-in')
+    userTotalContainer.innerHTML = `<p>${total}</p>`
+    // setTimeout(removeHide, 2000, userTotalContainer)
+    // setTimeout(addFade, 2000, userTotalContainer)
+    // setTimeout(innerHtmlSlow, 2000, `<p>${total}</p>`)
+    // console.log(`User total: ${total}`)
+
+  } else if (player.player === 1 && player.hand.length >= 2) {
+    cardBack.className = 'fade-out'
+    cardBack.classList.add('hide')
+    // setInterval(addHide, 1900, cardBack)
+    dealerTotalContainer.classList.remove('hide')
+    dealerTotalContainer.classList.add('long-fade-in')
+    dealerTotalContainer.innerHTML = `<p>${total}</p>`
     console.log(`Dealer total: ${total}`)
   }
   if (total === 21 && player.hand.length < 3) {
@@ -184,8 +226,10 @@ async function stay(player, otherplayer) {
 
 // Write a function to compare totals!
 async function compare(dealer, user) {
+  resetBtn.classList.remove('hide')
   console.log(`dealer.total = ${dealer.total}, user.total = ${user.total}`)
-  let endBox = document.querySelector('#end-container')
+  // let endBox = document.querySelector('#end-container')
+  // endBox.classList.toggle('hide')
   // console.log(`User Total inside Compare Func: ${user.Total}`)
   // console.log(`Dealer Total inside Compare Func: ${dealer.Total}`)
   if (dealer.total === user.total && dealer.total <= 21) {
@@ -213,7 +257,9 @@ async function reset(players) {
   userCardImg.innerHTML = ``
   dealerCardImg.innerHTML = ``
   userTotalContainer.innerHTML = ``
+  userTotalContainer.classList.toggle('hide')
   dealerTotalContainer.innerHTML = ``
+  dealerTotalContainer.classList.toggle('hide')
   if (reactBox.innerHTML != '') {
     reactBox.innerHTML = ''
   }
@@ -232,8 +278,41 @@ async function reset(players) {
   players.user.total = await checkTotal(players.user)
 
   players.dealer.hand = [await drawCard(players.dealer)]
-  players.dealer.hand.push(await drawCard(players.dealer))
+  // players.dealer.hand.push(await drawCard(players.dealer))
   players.dealer.total = await checkTotal(players.dealer)
-
+  cardBack.className = 'fade-in'
   return players
+}
+
+// End of Game Functionality!-------------------------------------------------------
+
+// Begin Style Functionality!-------------------------------------------------------
+
+function addHide(element) {
+  element.classList.add('hide')
+}
+
+function toggleHide(element) {
+  element.classList.toggle('hide')
+}
+
+function removeHide(element) {
+  element.classList.remove('hide')
+}
+
+function spaceEven(element) {
+  element.style.justifyContent = 'space-evenly'
+}
+
+function appendSlow(element, append) {
+  element.append(append)
+}
+
+function innerHtmlSlow(element, innerHTML) {
+  element.innerHTML = innerHTML
+  console.log(innerHTML)
+}
+
+function addFade(element) {
+  element.classList.add('fade-in')
 }

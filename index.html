@@ -13,25 +13,33 @@
 
 <body>
   <div class='content-wrapper'>
-    <div id='start-btn-container'>
-      <button id='start-btn'>Start</button>
-    </div>
-    <div id='reset-btn-container'>
-      <button id='reset-btn'>Reset</button>
+    <div id='title-card'>
+      <h1 id='title' class='fade-in'>BLACKJACK</h1>
+      <div id='start-btn-container'>
+        <button id='start-btn' class='fade-in'>Start</button>
+      </div>
     </div>
     <div id='user-card-container' class='cards'></div>
-    <div id='user-total-container' class='total'></div>
+    <div id='user-total-container' class='total hide'></div>
 
     <div id='reaction-container'></div>
 
-    <div id='dealer-card-container' class='cards'></div>
-    <div id='dealer-total-container' class='total'></div>
+    <div id='dealer-card-container' class='cards hide'>
+      <img id='card-back' class='hide fade-in' src='../blackjackGame/img/cardBack.png'>
+    </div>
+    <div id='dealer-total-container' class='total hide'></div>
 
     <div id='btn-container'>
-      <button id='hit' class='btn'>Hit Me</button>
-      <button id='stay' class='btn'>Stay</button>
+      <button id='hit' class='btn hide fade-in'>Hit Me</button>
+      <button id='stay' class='btn hide fade-in'>Stay</button>
     </div>
-    <div id='end-container'></div>
+    <div class='end-content-wrapper'>
+      <div id='end-container'>
+      </div>
+      <div id='reset-btn-container'>
+        <button id='reset-btn' class='hide fade-in'>Reset</button>
+      </div>
+    </div>
   </div>
 </body>
 

@@ -11,15 +11,11 @@ orange : #ca863b */
 * {
   box-sizing: border-box;
 }
-
-.hide{
-  display: none;
-}
 /* element styles ---------------------------------- */
-/* body{
+body{
   margin: 0;
   padding: 0;
-  display: flex;
+  /* display: flex; */
 }
 button{
   box-shadow: none;
@@ -27,10 +23,10 @@ button{
 }
 p,h1{
   margin: 0;
-} */
+}
 
-/* class styles ---------------------------------- */
-/* .content-wrapper{
+/* Title Card---------------------------------- */
+.content-wrapper{
   background: #cbd29e;
   background-size: cover;
   width: 100%;
@@ -39,66 +35,111 @@ p,h1{
   flex-direction: column;
   justify-content: center;
   border: 20px solid #f1e7cb
-} */
+}
 
+#title-card{
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50%;
+  order: 2;
+}
+#title-card h1{
+  border: 2px solid orange;
+}
+
+/* User Card Container---------------------------------- */
+#user-card-container{ 
+  border: 2px solid green;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: flex-end;
+  order: 3;
+  margin: 0 auto;
+  height: 50vh
+
+}
+
+#user-card-container img{
+  /* margin-right: -100px; */
+}
+
+/* Dealer Card Container---------------------------------- */
+#dealer-card-container{
+  border: 2px solid white;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  order: 1;
+  height: 50vh
+  /* padding: auto; */
+}
+
+#dealer-card-container img{
+  /* margin-left: -140px; */
+  /* transform: rotate(180deg); */
+}
+
+
+/* End Result Container---------------------------------- */
+
+.end-content-wrapper{
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  order: 4
+}
 /* .cards{
   display: flex;
   justify-content: center;
 } */
-/* 
-#user-card-container{ */
-  /* border: 2px solid green; */
-  /* display: flex;
-  height: 50vh;
-  justify-content: center;
-  align-items: flex-end;
-  order: 1
 
-} */
-
-/* #user-card-container img{
-  margin-right: -150px;
+#card-back{
+  width: 226px;
+  height: 314px;
+  position: absolute;
+  left: 35%;
+  top: 4%;
+  border: .5px solid black;
+  border-radius: 15px;
 }
 
-#dealer-card-container{ */
-  /* border: 2px solid blue; */
-  /* display: flex;
+#btn-container{
+  border: 2px solid purple;
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
   justify-content: center;
-  align-items: flex-start;
-  height: 50vh;
-  padding: auto;
-} */
-/* 
-#dealer-card-container img{
-  margin-left: -140px;
-  transform: rotate(180deg);
-} */
-/* 
-#btn-container{ */
-  /* border: 2px solid purple; */
-  /* display: flex;
-  justify-content: center;
-  order: 3;
-  padding: 10px;
-} */
+  align-items: center;
+  order: 5;
+  height: 10vh
+  /* padding: 10px; */
+}
 
-/* .btn{
-  margin-left: 20px;
-  color: #ca863b ;
-  background:  #f1e7cb;
-  padding: 15px 20px;
-  border-radius: 5px;
-} */
+.btn{
 
-/* .total{
+}
+
+.total{
   position: absolute;
   background-color: #ca863b;
   color: #f1e7cb;
   padding: 20px;
   border-radius: 100%;
   opacity: 85%;
-} */
-/* 
+}
+
 #user-total-container{
   bottom: 35%;
   left: 48%;
@@ -108,20 +149,65 @@ p,h1{
   left: 48%;
 }
 
-#reaction-container{
+#reaction-container h1{
   display: flex;
   justify-content: center;
   position: relative;
   top: 45%;
-} */
+}
 
-/* #end-container{ */
+#end-container h1{
   /* border: 2px solid red; */
-  /* background-color: #ca863b;
+  background-color: #ca863b;
   color: #f1e7cb;
-  position: absolute;
+  /* position: absolute; */
   padding: 10px;
   border-radius: 5px;
-  left: 42%;
+  /* left: 42%; */
 
-} */
+}
+
+
+/* animation classes--------------------------- */
+.fade-in{
+  animation: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 100;}
+}
+
+.fade-out{
+  animation: fade-out;
+  animation-duration: 2.0s;
+}
+
+@keyframes fade-out {
+  from {opacity: 100;}
+  to {opacity: 0;}
+}
+.long-fade-in{
+  animation: fade-in;
+  animation-duration: 5s;
+}
+
+@keyframes long-fade-in {
+  from {opacity: 0;}
+  to {opacity: 100;}
+}
+
+.slideIn{
+  animation: slide-in;
+  animation-duration: 2s;
+}
+
+@keyframes slide-in{
+  from{top: -200px}
+  to{top: 4%}
+}
+/* hide display--------------------------- */
+.hide{
+  display: none;
+}
