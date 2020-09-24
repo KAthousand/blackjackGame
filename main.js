@@ -127,26 +127,14 @@ async function drawCard(player) {
       }
       if (player.hand.length >= 1) {
         cardImg.classList.add('special-margin')
+        userCardBack.classList.remove('hide')
       }
       setTimeout(addHide, 1000, userCardBack)
       setTimeout(appendSlow, 1000, userContainer, cardImg)
-      // userContainer.append(cardImg)
-      // setTimeout(appendSlow, 2000, userContainer, cardImg)
+
     } else if (player.player == 1 && player.hand.length < 1) {
       setTimeout(appendSlow, 1000, dealerContainer, cardImg)
 
-      // cardImg.classList.add('dealer-slide')
-      // cardImg.classList.add('dealer')
-
-      // setTimeout(appendSlow, 1000, dealerContainer, cardImg)
-      // } else if (player.player === 0 && player.hand.length >= 2) {
-      //   cardImg.classList.remove('fade-in')
-      //   cardImg.classList.add('fade-in')
-      //   userContainer.append(cardImg)
-      // } else if (player.player === 1 && player.hand.length >= 1) {
-      //   cardImg.classList.remove('fade-in')
-      //   cardImg.classList.add('fade-in')
-      //   dealerContainer.append(cardImg)
     } else if (player.player == 1 && player.hand.length >= 1) {
       cardImg.classList.add('special-margin')
       dealerContainer.append(cardImg)
@@ -193,8 +181,9 @@ async function checkTotal(player) {
   }
 
   if (player.player === 0) {
-    userTotalContainer.classList.remove('hide')
-    userTotalContainer.classList.add('long-fade-in')
+    setTimeout(removeHide, 1000, userTotalContainer)
+    // userTotalContainer.classList.remove('hide')
+    userTotalContainer.classList.add('fade-in')
     userTotalContainer.innerHTML = `<p>YOUR TOTAL: ${total}</p>`
     // setTimeout(removeHide, 2000, userTotalContainer)
     // setTimeout(addFade, 2000, userTotalContainer)
@@ -296,9 +285,11 @@ async function reset(players) {
   players.user.total = await checkTotal(players.user)
 
   players.dealer.hand = [await drawCard(players.dealer)]
+  setTimeout(removeHide, 1000, dealerCardBack)
   // players.dealer.hand.push(await drawCard(players.dealer))
   players.dealer.total = await checkTotal(players.dealer)
-  dealerCardBack.className = 'fade-in'
+  dealerCardBack.class
+  dealerCardBack.className = 'dealer-slide'
   return players
 }
 
