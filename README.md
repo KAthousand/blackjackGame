@@ -43,7 +43,7 @@ https://deckofcardsapi.com/
 <!-- Specify the API you are using and include a link. Show us a snippet of JSON returned by your API so we know you can access it and get the info you need -->
 
 ## Wireframes
-[img]https://i.imgur.com/Zyac4om.png[/img]
+https://i.imgur.com/Zyac4om.png
 
 
 ### MVP/PostMVP
@@ -66,16 +66,16 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Sept 18-21| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|Sept 21| Project Approval | Incomplete
-|Sept 22| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|Sept 23| MVP | Incomplete
-|Sept 24| Post MVP/Styling | Incomplete
-|Sept 25| Presentations | Incomplete
+|Sept 18-21| Prompt / Wireframes / Priority Matrix / Timeframes | complete
+|Sept 21| Project Approval | complete
+|Sept 22| Core Application Structure (HTML, CSS, etc.) | complete
+|Sept 23| MVP | complete
+|Sept 24| Post MVP/Styling | complete
+|Sept 25| Presentations | complete
 
 ## Priority Matrix
 
-[img]https://i.imgur.com/ORteoVp.png[/img]
+https://i.imgur.com/ORteoVp.png
 
 ## Timeframes
 
