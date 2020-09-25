@@ -2,7 +2,7 @@
 
 ## Blackjack Game
 
-https://github.com/KAthousand/blackjackGame
+https://kathousand.github.io/blackjackGame/
 
 ## Project Description
 
