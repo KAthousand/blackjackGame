@@ -90,7 +90,7 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 | Dealer Reaction/Moves | H | 4hrs| 2hrs | 2hrs |
 | Ending & Resetting | H | 3hrs| 5hrs | 5hrs |
 | Media Query | H | 5hrs| 2hrs| 2hrs |
-| Advance CSS | L | 6hrs| 6hrs | 2hrs |
+| Advance CSS | L | 6hrs| 8hrs | 8hrs |
 | Total | H | 36hrs| 31.5hrs | 31.5hrs |
 
 ## Code Snippet
