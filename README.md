@@ -6,7 +6,7 @@ https://github.com/KAthousand/blackjackGame
 
 ## Project Description
 
-I will be using the deck of cards API  to create a game of blackjack in which the user will play against a computerized dealer.
+I will be using the deck of cards API  to create a game of blackjack in which the user will play against a programmed dealer.
 
 ## API and Data Sample
 

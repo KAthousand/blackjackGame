@@ -89,7 +89,7 @@ async function getId() {
     const response = await axios.get(url)
     //capture and return the deck id
     const deckId = response.data.deck_id
-    // console.log(deckId)
+
     return deckId
   } catch (error) {
     console.log(`Error: ${error}`)
@@ -102,7 +102,6 @@ async function drawCard(player) {
   try {
     const response = await axios.get(url)
     let card = response.data.cards
-    // console.log(card)
 
     // grab containers for user container and dealer container from html
     userContainer = document.querySelector('#user-card-container')
@@ -147,7 +146,6 @@ async function drawCard(player) {
       value = "1"
     }
     value = Number(value)
-    // console.log(value)
     return value
   } catch (error) {
     console.log(`Error: ${error}`)
@@ -161,9 +159,7 @@ async function checkTotal(player) {
   let userTotalContainer = document.querySelector('#user-total-container')
 
   if (player.player === 0) {
-    // console.log(`User Hand: ${player.hand}`)
   } else {
-    // console.log(`Dealer Hand: ${player.hand}`)
   }
   let total = 0
   player.hand.forEach((num) => {
@@ -177,12 +173,10 @@ async function checkTotal(player) {
     setTimeout(removeHide, 1000, userTotalContainer)
     userTotalContainer.classList.add('fade-in')
     userTotalContainer.innerHTML = `<p>YOUR TOTAL: ${total}</p>`
-    // console.log(`User total: ${total}`)
 
   } else if (player.player === 1 && player.hand.length >= 2) {
     dealerCardBack.className = 'fade-out'
     dealerCardBack.classList.add('hide')
-    // console.log(`Dealer total: ${total}`)
   }
   return total
 }
@@ -214,29 +208,28 @@ async function compare(dealer, user) {
   }, 1000)
 
   let dealerTotalContainer = document.querySelector('#dealer-total-container')
-  // console.log(`dealer.total = ${dealer.total}, user.total = ${user.total}`)
+
 
   if (dealer.total === user.total && dealer.total <= 21) {
     setTimeout(() => {
       endBox.innerHTML = `<h1>TIE GOES TO</h1><h1>THE HOUSE!</h1>`
     }, 1000)
-    // endBox.innerHTML = `<h1>Tie goes to the House!</h1>`
+
   } else if (dealer.total <= 21 && dealer.total > user.total) {
     setTimeout(() => {
       endBox.innerHTML = `<h1>HOUSE WINS!</h1>`
     }, 1000)
 
-    // endBox.innerHTML = `<h1>House Wins!</h1>`
   } else if (dealer.total > 21 && user.total <= 21) {
     setTimeout(() => {
       endBox.innerHTML = `<h1>DEALER BUST!</h1><h1>YOU WIN!</h1>`
     }, 1000)
-    // endBox.innerHTML = `<h1>House Bust! You Win!</h1>`
+
   } else if (user.total <= 21 && dealer.total < user.total) {
     setTimeout(() => {
       endBox.innerHTML = `<h1>YOU WIN!</h1>`
     }, 1000)
-    // endBox.innerHTML = `<h1>You Win!</h1>`
+
   } else if (user.total > 21) {
     setTimeout(() => {
       endBox.innerHTML = `<h1>BUST! HOUSE WINS!</h1>`
@@ -270,7 +263,7 @@ async function reset(players) {
   if (endBox.innerHTML != '') {
     endBox.innerHTML = ''
   }
-  // console.log(`------------------------`)
+
   players.user.total = 0
   players.user.hand = []
   players.dealer.total = 0
